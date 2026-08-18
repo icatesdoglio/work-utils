@@ -1,0 +1,32 @@
+[project]
+name = "local-automation"
+dynamic = ["version"]
+description = "Collection of Local Automation utilities and scripts"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "azure-identity>=1.25.1",
+    "azure-keyvault>=4.2.0",
+    "keyring>=25.0.0",
+]
+
+[project.scripts]
+rdp = "local_automation.scripts.mstsc_connector:main"
+vpn = "local_automation.scripts.connect_vpn:main"
+
+[dependency-groups]
+dev = [
+    "pytest"
+]
+
+[build-system]
+requires = ["setuptools>=64", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.uv]
+package = true
